@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin MongoDB</title>
+    <!-- Bootstrap local -->
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Tu CSS adicional (si lo hay) -->
+    <link rel="stylesheet" href="./css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color:#ff6892">
+            <div class="container">
+                <!-- Redirige al método Index del controlador Home -->
+                <a class="navbar-brand" asp-controller="Database" asp-action="Index">Admin MongoDB</a>
+                <!-- Aquí podrías agregar más elementos de la navbar -->
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-3">
+        @RenderBody()
+    </div>
+
+    <!-- Bootstrap local JS -->
+    <script src="./lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tu JS adicional (si lo hay) -->
+    <script src="./js/site.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
