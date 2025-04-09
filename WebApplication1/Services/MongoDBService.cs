@@ -1,6 +1,8 @@
 ﻿using MongoDB.Driver;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
+using System.IO.Compression;
 
 namespace WebApplication1.Services
 {
@@ -197,20 +199,18 @@ namespace WebApplication1.Services
         }
 
 
+        // En MongoDBService.cs
         public async Task ExportDatabaseAsync(string databaseName, string backupFolder)
         {
             try
             {
-                // Se realiza el backup completo (mongodump) en la carpeta indicada.
                 var processInfo = new ProcessStartInfo
                 {
-                    FileName = "docker",
-                    Arguments = $"exec mongodb mongodump " +
-                                $"--db {databaseName} " +
-                                $"--authenticationDatabase admin " +
-                                $"-u admin " +
-                                $"-p AdminPassword123 " +
-                                $"--out {backupFolder}",
+                    FileName = "mongodump",
+                    Arguments = $"--uri=mongodb://admin:AdminPassword123@mongodb:27017/ " +
+                                $"--authenticationDatabase=admin " +
+                                $"--db={databaseName} " +
+                                $"--out={backupFolder}",  // Ahora usa directamente la ruta final
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
@@ -236,9 +236,11 @@ namespace WebApplication1.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al exportar base de datos");
-                throw;
+                throw;  // Mantenemos el throw para manejar en el controlador
             }
         }
+
+       
 
         public async Task RestoreDatabaseAsync(string databaseName, string backupFolder)
         {
