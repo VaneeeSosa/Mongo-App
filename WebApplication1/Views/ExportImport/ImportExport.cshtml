@@ -1,0 +1,90 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Importar / Exportar";
+}
+
+<!-- Estilos personalizados para tema rosa pastel -->
+<style>
+    .pastel-bg {
+        background-color: #ffb6c1 !important;
+    }
+
+    .pastel-border {
+        border: 1px solid #ffb6c1 !important;
+    }
+
+    .pastel-card-header {
+        background-color: #ffb6c1;
+        color: #ffffff;
+    }
+
+    .btn-pastel {
+        background-color: #ffb6c1;
+        border-color: #ffb6c1;
+        color: #fff;
+    }
+
+        .btn-pastel:hover {
+            background-color: #ffa6b8;
+            border-color: #ffa6b8;
+            color: #fff;
+        }
+</style>
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+
+    <div class="row">
+        <!-- Card: Exportar Backup -->
+        <div class="col-md-6 mb-3">
+            <div class="card pastel-border">
+                <div class="card-header pastel-card-header">
+                    <h4>Exportar Backup</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="ExportImport" asp-action="Export" method="post">
+                        <div class="form-group">
+                            <label>Base de Datos:</label>
+                            <select name="database" class="form-control" required>
+                                <option value="">Seleccione una base de datos</option>
+                                @foreach (var db in Model)
+                                {
+                                    <option value="@db">@db</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-pastel mt-2">Exportar Backup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card: Importar Backup -->
+        <div class="col-md-6 mb-3">
+            <div class="card pastel-border">
+                <div class="card-header pastel-card-header">
+                    <h4>Importar Backup</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="ExportImport" asp-action="Import" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Base de Datos:</label>
+                            <select name="database" class="form-control" required>
+                                <option value="">Seleccione una base de datos</option>
+                                @foreach (var db in Model)
+                                {
+                                    <option value="@db">@db</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Archivo ZIP:</label>
+                            <input type="file" name="file" class="form-control-file" accept=".zip" required />
+                        </div>
+                        <button type="submit" class="btn btn-pastel mt-2">Importar Backup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

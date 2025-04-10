@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\downloads\\mongosgestor-main\\mongosgestor-main\\webapplication1\\views\\database\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\database\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\downloads\\mongosgestor-main\\mongosgestor-main\\webapplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\downloads\\mongosgestor-main\\mongosgestor-main\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -13,14 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\downloads\\mongosgestor-main\\mongosgestor-main\\webapplication1\\views\\security\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\security\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\downloads\\mongosgestor-main\\mongosgestor-main\\webapplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\downloads\\mongosgestor-main\\mongosgestor-main\\webapplication1\\views\\database\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\database\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\downloads\\mongosgestor-main\\mongosgestor-main\\webapplication1\\controllers\\exportimportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,17 +74,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-08T07:26:23.578Z",
               "EditorCaption": ""
@@ -115,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -140,20 +140,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\Views\\Database\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Database\\Index.cshtml",
               "ToolTip": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\Views\\Database\\Index.cshtml",
               "RelativeToolTip": "Views\\Database\\Index.cshtml",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAgwJwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-08T05:16:16.941Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -161,12 +161,11 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-08T22:25:40.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T22:25:40.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Users.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\Views\\Security\\Users.cshtml",
               "RelativeDocumentMoniker": "Views\\Security\\Users.cshtml",
@@ -174,8 +173,7 @@
               "RelativeToolTip": "Views\\Security\\Users.cshtml",
               "ViewState": "AgIAAE4AAAAAAAAAAAAgwG0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-08T05:17:40.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T05:17:40.633Z"
             },
             {
               "$type": "Document",

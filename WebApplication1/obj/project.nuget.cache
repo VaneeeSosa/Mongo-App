@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dSbg093VCC4=",
+  "dgSpecHash": "QZl2QoVTokM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\vsanc\\Downloads\\MONGOSGESTOR-main\\MONGOSGESTOR-main\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vsanc\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\vsanc\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

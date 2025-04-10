@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -20,19 +22,33 @@ namespace WebApplication1.Controllers
             _mongoClient = mongoClient;
         }
 
-        public async Task<IActionResult> Index()
+        // Muestra la vista exclusiva para la gestión de Backups (lista de archivos ZIP)
+        public IActionResult Backups()
         {
-            var databaseNames = (await _mongoClient.ListDatabaseNamesAsync()).ToList();
-            return View(databaseNames);
+            string backupFolder = "/backup";
+            List<string> backupFiles = new List<string>();
+
+            if (Directory.Exists(backupFolder))
+            {
+                backupFiles = Directory.GetFiles(backupFolder, "*.zip").ToList();
+            }
+
+            return View(backupFiles); // Model: List<string> (paths completos de los ZIP)
         }
 
+        // Muestra la vista exclusiva para Importar/Exportar
+        public async Task<IActionResult> ImportExport()
+        {
+            var databaseNames = (await _mongoClient.ListDatabaseNamesAsync()).ToList();
+            return View(databaseNames); // Model: List<string>
+        }
 
         [HttpPost]
         public async Task<IActionResult> Export(string database)
         {
             try
             {
-                // Ruta CORREGIDA: usar el volumen compartido /backup
+                // Ruta: usar el volumen compartido /backup
                 var backupFolder = Path.Combine("/backup", database, DateTime.Now.ToString("yyyy-MM-dd"));
                 Directory.CreateDirectory(backupFolder);
 
@@ -45,7 +61,7 @@ namespace WebApplication1.Controllers
 
                 ZipFile.CreateFromDirectory(backupFolder, zipPath);
 
-                // Descargar desde /backup
+                // Descargar el ZIP generado
                 return PhysicalFile(zipPath, "application/zip", $"{database}.zip");
             }
             catch (Exception ex)
@@ -53,8 +69,6 @@ namespace WebApplication1.Controllers
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
-
-
 
         [HttpPost]
         public async Task<IActionResult> Import(string database, IFormFile file)
@@ -64,7 +78,7 @@ namespace WebApplication1.Controllers
                 if (file == null || file.Length == 0)
                     return BadRequest("No se ha seleccionado archivo");
 
-                // Usar la misma ruta que en Export (/app/backups)
+                // Ubicación base para importar backups
                 var importBaseFolder = "/app/backups/imports";
                 Directory.CreateDirectory(importBaseFolder);
 
@@ -75,7 +89,7 @@ namespace WebApplication1.Controllers
                     await file.CopyToAsync(stream);
                 }
 
-                // Carpeta para extraer el ZIP (ej: /app/backups/imports/midb-2023)
+                // Carpeta para extraer el ZIP
                 var extractFolder = Path.Combine(importBaseFolder, Path.GetFileNameWithoutExtension(file.FileName));
 
                 // Limpiar carpeta si existe
@@ -86,19 +100,16 @@ namespace WebApplication1.Controllers
                 // Extraer el ZIP
                 ZipFile.ExtractToDirectory(filePath, extractFolder);
 
-                // Restaurar usando mongorestore
+                // Restaurar la base de datos usando mongorestore
                 await _mongoService.RestoreDatabaseAsync(database, extractFolder);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("ImportExport");
             }
             catch (Exception ex)
             {
-                // Loggear el error (ex.Message)
                 return StatusCode(500, $"Error al importar: {ex.Message}");
             }
         }
-
-
 
         public async Task<IActionResult> GetCollections(string database)
         {
