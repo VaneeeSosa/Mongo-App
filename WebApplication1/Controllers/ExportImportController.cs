@@ -70,6 +70,7 @@ namespace WebApplication1.Controllers
             }
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Import(string database, IFormFile file)
         {
@@ -99,8 +100,6 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("ImportExport");
             }
         }
-
-
 
 
         public async Task<IActionResult> GetCollections(string database)
