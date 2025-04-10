@@ -1,5 +1,5 @@
-# Usa imagen base de ASP.NET 9 para runtime
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+# Usa imagen base de ASP.NET 9 (versión bullseye) para runtime
+FROM mcr.microsoft.com/dotnet/aspnet:9.0-bullseye-slim AS base
 WORKDIR /app
 EXPOSE 80
 
