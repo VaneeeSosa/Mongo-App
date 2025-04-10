@@ -3,11 +3,35 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Admin MongoDB</title>
+    <title>@ViewData["Title"] Admin MongoDB</title>
     <!-- Bootstrap local -->
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <!-- Tu CSS adicional (si lo hay) -->
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .bg-pink-1 {
+            background-color: #f8bbd0 !important;
+        }
+        /* Rosa claro */
+        .bg-pink-2 {
+            background-color: #f48fb1 !important;
+        }
+        /* Rosa medio */
+        .bg-pink-3 {
+            background-color: #ec407a !important;
+        }
+        /* Rosa intenso */
+        .btn-pink {
+            background-color: #e91e63;
+            color: white;
+        }
+
+            .btn-pink:hover {
+                background-color: #c2185b;
+                color: white;
+            }
+    </style>
+
 </head>
 <body>
     <header>
@@ -25,7 +49,7 @@
     </div>
 
     <!-- Bootstrap local JS -->
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Tu JS adicional (si lo hay) -->
     <script src="~/js/site.js"></script>
     @RenderSection("Scripts", required: false)

@@ -1,22 +1,31 @@
-html {
-  font-size: 14px;
+.bg-pink {
+    background-color: #e91e63 !important;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.bg-lightpink {
+    background-color: #f8bbd0 !important;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.text-pink {
+    color: #e91e63 !important;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.btn-pink {
+    background-color: #e91e63;
+    color: white;
 }
 
-body {
-  margin-bottom: 60px;
+    .btn-pink:hover {
+        background-color: #d81b60;
+        color: white;
+    }
+
+.btn-outline-pink {
+    border-color: #e91e63;
+    color: #e91e63;
 }
+
+    .btn-outline-pink:hover {
+        background-color: #e91e63;
+        color: white;
+    }

@@ -1,0 +1,71 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Importar/Exportar Datos";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
+
+    <div class="row">
+        <!-- Exportar -->
+        <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow" style="background-color:#fde2e4;">
+                <div class="card-header text-white" style="background-color:#e91e63;">
+                    Exportar Datos
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Data" asp-action="ExportData" method="post">
+                        <div class="mb-3">
+                            <label>Base de Datos:</label>
+                            <select name="database" class="form-select" required>
+                                <option value="">Seleccione una base de datos</option>
+                                @foreach (var db in Model)
+                                {
+                                    <option value="@db">@db</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Colección:</label>
+                            <input type="text" name="collection" class="form-control" placeholder="Nombre de la colección" required />
+                        </div>
+                        <button type="submit" class="btn text-white w-100" style="background-color:#e91e63;">Exportar Datos</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Importar -->
+        <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow" style="background-color:#fce4ec;">
+                <div class="card-header text-white" style="background-color:#ad1457;">
+                    Importar Datos
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Data" asp-action="ImportData" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label>Base de Datos:</label>
+                            <select name="database" class="form-select" required>
+                                <option value="">Seleccione una base de datos</option>
+                                @foreach (var db in Model)
+                                {
+                                    <option value="@db">@db</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Colección:</label>
+                            <input type="text" name="collection" class="form-control" placeholder="Nombre de la colección" required />
+                        </div>
+                        <div class="mb-3">
+                            <label>Archivo ZIP:</label>
+                            <input type="file" name="file" class="form-control" accept=".zip" required />
+                            <small class="text-muted">ZIP generado por exportación</small>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100">Importar Datos</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
