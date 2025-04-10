@@ -78,16 +78,17 @@ namespace WebApplication1.Controllers
                 if (file == null || file.Length == 0)
                     return BadRequest("No se ha seleccionado archivo");
 
-                // Guardar el archivo ZIP directamente dentro del volumen /backup
+                // Construir la ruta completa donde se guardará el archivo ZIP
                 var zipPath = Path.Combine("/backup", file.FileName);
 
+                // Guardar el archivo en el volumen compartido /backup
                 using (var stream = new FileStream(zipPath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
                 }
 
-                // Restaurar usando el nuevo método
-                await _mongoService.RestoreBackupAsync(database, file.FileName);
+                // Se pasa la ruta completa del archivo ZIP al método de restauración
+                await _mongoService.RestoreBackupAsync(database, zipPath);
 
                 TempData["Success"] = $"Backup restaurado exitosamente en la base de datos '{database}'";
                 return RedirectToAction("ImportExport");
@@ -98,6 +99,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("ImportExport");
             }
         }
+
 
 
 
