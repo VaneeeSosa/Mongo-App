@@ -1,5 +1,5 @@
-# Usa imagen base de ASP.NET 9 (versión bullseye) para runtime
-FROM mcr.microsoft.com/dotnet/aspnet:9.0-bullseye-slim AS base
+# Usa imagen base de ASP.NET 8.0 (versión bullseye) para runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-bullseye-slim AS base
 WORKDIR /app
 EXPOSE 80
 
@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
     apt-get update && apt-get install -y mongodb-org-tools && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Build stage
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+# Build stage con SDK de .NET 8.0
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["WebApplication1/WebApplication1.csproj", "WebApplication1/"]
 RUN dotnet restore "WebApplication1/WebApplication1.csproj"
@@ -23,7 +23,7 @@ RUN dotnet build "WebApplication1.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "WebApplication1.csproj" -c Release -o /app/publish
 
-# Final stage
+# Final stage: copia la aplicación publicada y establece el entrypoint
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
