@@ -3,107 +3,75 @@
     ViewData["Title"] = "Gestión de Usuarios";
 }
 
-<!-- Estilos personalizados para tema pastel -->
-<style>
-    /* Fondo y borde en tonos pastel */
-    .pastel-border {
-        border: 1px solid #ffb6c1;
-    }
-    /* Encabezado de card en rosa pastel */
-    .pastel-card-header {
-        background-color: #ffb6c1;
-        color: #fff;
-    }
-    /* Botón pastel */
-    .btn-pastel {
-        background-color: #ffb6c1;
-        border-color: #ffb6c1;
-        color: #fff;
-    }
-
-        .btn-pastel:hover {
-            background-color: #ffa6b8;
-            border-color: #ffa6b8;
-            color: #fff;
-        }
-</style>
-
 <div class="container mt-4">
     <h2>@ViewData["Title"]</h2>
 
-    <!-- Contenedor con los dos cards en la misma hilera -->
-    <div class="row">
-        <!-- Card: Lista de Usuarios -->
-        <div class="col-md-6 mb-3">
-            <div class="card pastel-border">
-                <div class="card-header pastel-card-header">
-                    <h4>Usuarios Registrados</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Usuario</th>
-                                <th>Roles</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var user in Model)
-                            {
-                                <tr>
-                                    <td>@user["user"]</td>
-                                    <td>
-                                        @foreach (var role in user["roles"].AsBsonArray)
-                                        {
-                                            <span class="badge pastel-border" style="background-color:#ffb6c1; color:#fff;">@role["role"]</span>
-                                        }
-                                    </td>
-                                    <td>
-                                        <form method="post" asp-action="DeleteUser">
-                                            <input type="hidden" name="database" value="@ViewContext.HttpContext.Request.Query["database"]" />
-                                            <input type="hidden" name="username" value="@user["user"]" />
-                                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <!-- Lista de Usuarios -->
+    <div class="card mt-3">
+        <div class="card-header bg-info text-white">
+            <h4>Usuarios Registrados</h4>
         </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Roles</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user["user"]</td>
+                            <td>
+                                @foreach (var role in user["roles"].AsBsonArray)
+                                {
+                                    <span class="badge bg-primary">@role["role"]</span>
+                                }
+                            </td>
+                            <td>
+                                <form method="post" asp-action="DeleteUser">
+                                    <input type="hidden" name="database" value="@ViewContext.HttpContext.Request.Query["database"]" />
+                                    <input type="hidden" name="username" value="@user["user"]" />
+                                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-        <!-- Card: Crear Nuevo Usuario -->
-        <div class="col-md-6 mb-3">
-            <div class="card pastel-border">
-                <div class="card-header pastel-card-header">
-                    <h4>Nuevo Usuario</h4>
+    <!-- Crear Nuevo Usuario -->
+    <div class="card mt-4">
+        <div class="card-header bg-success text-white">
+            <h4>Nuevo Usuario</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="CreateUser">
+                <input type="hidden" name="database" value="@ViewContext.HttpContext.Request.Query["database"]" />
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="username" placeholder="Nombre de usuario" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" name="role" required>
+                            <option value="read">Lectura</option>
+                            <option value="readWrite">Escritura</option>
+                            <option value="dbAdmin">Administrador</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form asp-action="CreateUser">
-                        <input type="hidden" name="database" value="@ViewContext.HttpContext.Request.Query["database"]" />
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" name="username" placeholder="Nombre de usuario" required>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
-                            </div>
-                            <div class="col-md-3">
-                                <select class="form-select" name="role" required>
-                                    <option value="read">Lectura</option>
-                                    <option value="readWrite">Escritura</option>
-                                    <option value="dbAdmin">Administrador</option>
-                                </select>
-                            </div>
-                            <div class="col-md-1">
-                                <button type="submit" class="btn btn-pastel">Crear</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
