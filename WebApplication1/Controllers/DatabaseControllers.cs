@@ -2,16 +2,21 @@
 using WebApplication1.Services;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace WebApplication1.Controllers
 {
     public class DatabaseController : Controller
     {
         private readonly MongoDBService _mongoService;
+        private readonly ILogger<DatabaseController> _logger;
 
-        public DatabaseController(MongoDBService mongoService)
+        public DatabaseController(MongoDBService mongoService, ILogger<DatabaseController> logger)
         {
             _mongoService = mongoService;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index()
@@ -46,19 +51,48 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(databaseName))
+                var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+                var backupPath = $"/data/backups/{timestamp}";
+
+                var processInfo = new ProcessStartInfo
                 {
-                    TempData["Error"] = "Debe especificar una base de datos";
+                    FileName = "mongodump",
+                    Arguments = $"--host=mongodb " +
+                                $"--db {databaseName} " +
+                                $"--authenticationDatabase admin " +
+                                $"-u admin " +
+                                $"-p adminpassword " +
+                                $"--out {backupPath}",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                using var process = new Process { StartInfo = processInfo };
+                process.Start();
+
+                var output = await process.StandardOutput.ReadToEndAsync();
+                var error = await process.StandardError.ReadToEndAsync();
+
+                await process.WaitForExitAsync();
+
+                if (process.ExitCode != 0)
+                {
+                    _logger.LogError("Error en backup: {Error}", error);
+                    TempData["Error"] = $"Error en backup: {error}";
                     return RedirectToAction("Index");
                 }
 
-                await _mongoService.CreateBackupAsync(databaseName);
-                TempData["Success"] = $"Backup de '{databaseName}' creado exitosamente!";
+                _logger.LogInformation("Backup de {Database} creado en: {Path}", databaseName, backupPath);
+                TempData["Success"] = $"Backup de {databaseName} creado en: {backupPath}";
             }
             catch (Exception ex)
             {
-                TempData["Error"] = $"Error en backup: {ex.Message}";
+                _logger.LogError(ex, "Error en CreateBackup");
+                TempData["Error"] = $"Error en CreateBackup: {ex.Message}";
             }
+
             return RedirectToAction("Index");
         }
     }

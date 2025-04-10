@@ -78,38 +78,28 @@ namespace WebApplication1.Controllers
                 if (file == null || file.Length == 0)
                     return BadRequest("No se ha seleccionado archivo");
 
-                // Ubicación base para importar backups
-                var importBaseFolder = "/app/backups/imports";
-                Directory.CreateDirectory(importBaseFolder);
+                // Guardar el archivo ZIP directamente dentro del volumen /backup
+                var zipPath = Path.Combine("/backup", file.FileName);
 
-                // Guardar el archivo ZIP en /app/backups/imports
-                var filePath = Path.Combine(importBaseFolder, file.FileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                using (var stream = new FileStream(zipPath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
                 }
 
-                // Carpeta para extraer el ZIP
-                var extractFolder = Path.Combine(importBaseFolder, Path.GetFileNameWithoutExtension(file.FileName));
+                // Restaurar usando el nuevo método
+                await _mongoService.RestoreBackupAsync(database, file.FileName);
 
-                // Limpiar carpeta si existe
-                if (Directory.Exists(extractFolder))
-                    Directory.Delete(extractFolder, recursive: true);
-                Directory.CreateDirectory(extractFolder);
-
-                // Extraer el ZIP
-                ZipFile.ExtractToDirectory(filePath, extractFolder);
-
-                // Restaurar la base de datos usando mongorestore
-                await _mongoService.RestoreDatabaseAsync(database, extractFolder);
-
+                TempData["Success"] = $"Backup restaurado exitosamente en la base de datos '{database}'";
                 return RedirectToAction("ImportExport");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error al importar: {ex.Message}");
+                TempData["Error"] = $"Error al importar backup: {ex.Message}";
+                return RedirectToAction("ImportExport");
             }
         }
+
+
 
         public async Task<IActionResult> GetCollections(string database)
         {

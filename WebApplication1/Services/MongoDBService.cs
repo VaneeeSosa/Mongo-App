@@ -195,5 +195,51 @@ namespace WebApplication1.Services
                 throw;
             }
         }
+
+        public async Task RestoreBackupAsync(string databaseName, string zipFileName)
+        {
+            try
+            {
+                var backupZipPath = Path.Combine("/backup", zipFileName);
+                var tempExtractPath = Path.Combine("/tmp", Path.GetFileNameWithoutExtension(zipFileName));
+
+                // Extraer el ZIP
+                ZipFile.ExtractToDirectory(backupZipPath, tempExtractPath, overwriteFiles: true);
+
+                var processInfo = new ProcessStartInfo
+                {
+                    FileName = "mongorestore",
+                    Arguments = $"--uri=mongodb://admin:AdminPassword123@mongodb:27017/ " +
+                                $"--authenticationDatabase=admin " +
+                                $"--db={databaseName} --drop {tempExtractPath}/{databaseName}",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                using var process = new Process { StartInfo = processInfo };
+                process.Start();
+
+                var output = await process.StandardOutput.ReadToEndAsync();
+                var error = await process.StandardError.ReadToEndAsync();
+
+                await process.WaitForExitAsync();
+
+                if (process.ExitCode != 0)
+                {
+                    _logger.LogError("Error al restaurar backup: {Error}", error);
+                    throw new Exception($"Error al restaurar backup: {error}");
+                }
+
+                _logger.LogInformation("Backup restaurado exitosamente para {Database}", databaseName);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error en RestoreBackupAsync");
+                throw;
+            }
+        }
+
     }
 }
