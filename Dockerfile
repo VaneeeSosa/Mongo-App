@@ -15,7 +15,7 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
-# Instalar MongoDB CLI (mongodump/mongorestore) - Versión corregida
+# Instalar herramientas de MongoDB (mongodump, mongorestore y mongoexport)
 RUN apt-get update && \
     apt-get install -y wget gnupg && \
     wget -qO - https://pgp.mongodb.com/server-6.0.asc | gpg --dearmor -o /usr/share/keyrings/mongodb.gpg && \
@@ -25,7 +25,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copiar binarios publicados
+# Copiar los binarios publicados desde la etapa de construcción
 COPY --from=build /app/WebApplication1/out ./
 
 ENTRYPOINT ["dotnet", "WebApplication1.dll"]

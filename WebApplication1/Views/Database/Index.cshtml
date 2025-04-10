@@ -27,20 +27,20 @@
         color: #fff;
     }
 
-    .btn-pastel:hover {
-        background-color: #ffa6b8;
-        border-color: #ffa6b8;
-        color: #fff;
-    }
+        .btn-pastel:hover {
+            background-color: #ffa6b8;
+            border-color: #ffa6b8;
+            color: #fff;
+        }
 </style>
 
 <div class="container mt-4">
     <h2>@ViewData["Title"]</h2>
 
-    <!-- Contenedor de 3 cards por hilera -->
+    <!-- Fila 1: Bases de Datos Existentes y Nueva Base de Datos -->
     <div class="row">
-        <!-- Card: Bases de Datos Existentes -->
-        <div class="col-md-4 mb-3">
+        <!-- Card 1: Bases de Datos Existentes -->
+        <div class="col-md-6 mb-3">
             <div class="card pastel-border">
                 <div class="card-header pastel-card-header">
                     <h4>Bases de Datos Existentes</h4>
@@ -62,8 +62,8 @@
             </div>
         </div>
 
-        <!-- Card: Nueva Base de Datos -->
-        <div class="col-md-4 mb-3">
+        <!-- Card 2: Nueva Base de Datos -->
+        <div class="col-md-6 mb-3">
             <div class="card pastel-border">
                 <div class="card-header pastel-card-header">
                     <h4>Nueva Base de Datos</h4>
@@ -79,9 +79,12 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Card: Gestión de Backups -->
-        <div class="col-md-4 mb-3">
+    <!-- Fila 2: Backups -->
+    <div class="row">
+        <!-- Card 3: Gestión de Backups -->
+        <div class="col-md-6 mb-3">
             <div class="card pastel-border">
                 <div class="card-header pastel-card-header">
                     <h4>Backups</h4>

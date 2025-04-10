@@ -32,22 +32,18 @@ namespace WebApplication1.Services
             }
         }
 
-        public async Task CreateBackupAsync(string databaseName)
+        // Método para exportar (hacer backup) de la base de datos usando mongodump directamente
+        public async Task ExportDatabaseAsync(string databaseName, string backupFolder)
         {
             try
             {
-                var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-                var backupPath = $"/data/backups/{timestamp}";
-
                 var processInfo = new ProcessStartInfo
                 {
-                    FileName = "docker",
-                    Arguments = $"exec mongodb mongodump " +
-                                $"--db {databaseName} " +
-                                $"--authenticationDatabase admin " +
-                                $"-u admin " +
-                                $"-p adminpassword " +
-                                $"--out {backupPath}",
+                    FileName = "mongodump",
+                    Arguments = $"--uri=mongodb://admin:AdminPassword123@mongodb:27017/ " +
+                                $"--authenticationDatabase=admin " +
+                                $"--db={databaseName} " +
+                                $"--out={backupFolder}",
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
@@ -64,46 +60,34 @@ namespace WebApplication1.Services
 
                 if (process.ExitCode != 0)
                 {
-                    _logger.LogError("Error en backup: {Error}", error);
-                    throw new Exception($"Error en backup: {error}");
+                    _logger.LogError("Error en exportación: {Error}", error);
+                    throw new Exception($"Error en exportación: {error}");
                 }
 
-                _logger.LogInformation("Backup de {Database} creado en: {Path}", databaseName, backupPath);
+                _logger.LogInformation("Backup de {Database} creado en: {Folder}", databaseName, backupFolder);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error en CreateBackupAsync");
+                _logger.LogError(ex, "Error al exportar base de datos");
                 throw;
             }
         }
 
-        public async Task<List<string>> ListDatabasesAsync()
+        // Método para restaurar la base de datos usando mongorestore directamente
+        public async Task RestoreDatabaseAsync(string databaseName, string backupFolder)
         {
-            try
-            {
-                var databases = await _client.ListDatabaseNamesAsync();
-                return databases.ToList();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error al listar bases de datos");
-                throw;
-            }
-        }
+            // Aseguramos que la ruta use barras '/' (Linux)
+            backupFolder = backupFolder.Replace("\\", "/");
 
-        public async Task RestoreBackupAsync(string backupName)
-        {
             try
             {
                 var processInfo = new ProcessStartInfo
                 {
-                    FileName = "docker",
-                    Arguments = $"exec mongodb mongorestore " +
-                                $"--authenticationDatabase admin " +
-                                $"-u admin " +
-                                $"-p adminpassword " +
-                                $"--dir /data/backups/{backupName} " +
-                                $"--drop",
+                    FileName = "mongorestore",
+                    Arguments = $"--uri=mongodb://admin:AdminPassword123@mongodb:27017/ " +
+                                $"--authenticationDatabase=admin " +
+                                $"--db={databaseName} " +
+                                $"--drop {backupFolder}",
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
@@ -124,15 +108,16 @@ namespace WebApplication1.Services
                     throw new Exception($"Error en restauración: {error}");
                 }
 
-                _logger.LogInformation("Backup {BackupName} restaurado exitosamente", backupName);
+                _logger.LogInformation("Backup de {Database} restaurado desde: {Folder}", databaseName, backupFolder);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error en RestoreBackupAsync");
+                _logger.LogError(ex, "Error al restaurar backup");
                 throw;
             }
         }
 
+        // Método para exportar una colección específica usando mongoexport directamente
         public async Task ExportCollectionAsync(string databaseName, string collectionName)
         {
             try
@@ -142,13 +127,11 @@ namespace WebApplication1.Services
 
                 var processInfo = new ProcessStartInfo
                 {
-                    FileName = "docker",
-                    Arguments = $"exec mongodb mongoexport " +
+                    FileName = "mongoexport",
+                    Arguments = $"--uri=mongodb://admin:AdminPassword123@mongodb:27017/ " +
+                                $"--authenticationDatabase=admin " +
                                 $"--db {databaseName} " +
                                 $"--collection {collectionName} " +
-                                $"--authenticationDatabase admin " +
-                                $"-u admin " +
-                                $"-p adminpassword " +
                                 $"--out {exportPath} " +
                                 $"--jsonArray",
                     RedirectStandardOutput = true,
@@ -181,14 +164,29 @@ namespace WebApplication1.Services
             }
         }
 
+        public async Task<List<string>> ListDatabasesAsync()
+        {
+            try
+            {
+                var databases = await _client.ListDatabaseNamesAsync();
+                return databases.ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al listar bases de datos");
+                throw;
+            }
+        }
+
+        // Listado de backups disponibles (actualizado según tu entorno Linux)
         public List<string> GetAvailableBackups()
         {
             try
             {
-                const string backupsPath = @"C:\mongo-backups";
-                return Directory.GetDirectories(backupsPath)
+                const string backupsPath = "/backup";
+                return Directory.GetFiles(backupsPath, "*.zip")
                     .Select(Path.GetFileName)
-                    .OrderByDescending(d => d)
+                    .OrderByDescending(f => f)
                     .ToList();
             }
             catch (Exception ex)
@@ -197,97 +195,5 @@ namespace WebApplication1.Services
                 throw;
             }
         }
-
-
-        // En MongoDBService.cs
-        public async Task ExportDatabaseAsync(string databaseName, string backupFolder)
-        {
-            try
-            {
-                var processInfo = new ProcessStartInfo
-                {
-                    FileName = "mongodump",
-                    Arguments = $"--uri=mongodb://admin:AdminPassword123@mongodb:27017/ " +
-                                $"--authenticationDatabase=admin " +
-                                $"--db={databaseName} " +
-                                $"--out={backupFolder}",  // Ahora usa directamente la ruta final
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                };
-
-                using var process = new Process { StartInfo = processInfo };
-                process.Start();
-
-                var output = await process.StandardOutput.ReadToEndAsync();
-                var error = await process.StandardError.ReadToEndAsync();
-
-                await process.WaitForExitAsync();
-
-                if (process.ExitCode != 0)
-                {
-                    _logger.LogError("Error en exportación: {Error}", error);
-                    throw new Exception($"Error en exportación: {error}");
-                }
-
-                _logger.LogInformation("Backup de {Database} creado en: {Folder}", databaseName, backupFolder);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error al exportar base de datos");
-                throw;  // Mantenemos el throw para manejar en el controlador
-            }
-        }
-
-       
-
-        public async Task RestoreDatabaseAsync(string databaseName, string backupFolder)
-        {
-            // Aseguramos que la ruta use barras '/' (Linux)
-            backupFolder = backupFolder.Replace("\\", "/");
-            try
-            {
-                var processInfo = new ProcessStartInfo
-                {
-                    FileName = "docker",
-                    Arguments = $"exec mongodb mongorestore " +
-                                $"--authenticationDatabase admin " +
-                                $"--authenticationMechanism SCRAM-SHA-1 " +
-                                $"-u admin " +
-                                $"-p AdminPassword123 " +
-                                $"--drop --nsInclude={databaseName}.* {backupFolder}",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                };
-
-                using var process = new Process { StartInfo = processInfo };
-                process.Start();
-
-                var output = await process.StandardOutput.ReadToEndAsync();
-                var error = await process.StandardError.ReadToEndAsync();
-
-                await process.WaitForExitAsync();
-
-                if (process.ExitCode != 0)
-                {
-                    _logger.LogError("Error en restauración: {Error}", error);
-                    throw new Exception($"Error en restauración: {error}");
-                }
-
-                _logger.LogInformation("Backup de {Database} restaurado desde: {Folder}", databaseName, backupFolder);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error al restaurar backup");
-                throw;
-            }
-        }
-
-
-
-
     }
 }
