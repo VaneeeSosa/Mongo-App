@@ -11,7 +11,7 @@
         <div class="card-header bg-info text-white bg-pink">
             <h4>Usuarios Registrados</h4>
         </div>
-        <div class="card-body">
+        <div class="card-body bg-lightpink">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -47,10 +47,10 @@
 
     <!-- Crear Nuevo Usuario -->
     <div class="card mt-4">
-        <div class="card-header bg-success text-white">
+        <div class="card-header bg-success text-white bg-pink">
             <h4>Nuevo Usuario</h4>
         </div>
-        <div class="card-body">
+        <div class="card-body bg-lightpink">
             <form asp-action="CreateUser">
                 <input type="hidden" name="database" value="@ViewContext.HttpContext.Request.Query["database"]" />
                 <div class="row g-3">

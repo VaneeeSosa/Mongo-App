@@ -50,6 +50,5 @@ namespace WebApplication1.Services
             };
             await db.RunCommandAsync<BsonDocument>(command);
         }
-
     }
 }

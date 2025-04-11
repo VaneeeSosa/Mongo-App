@@ -13,62 +13,71 @@
         <div class="alert alert-danger">@TempData["Error"]</div>
     }
 
-    <h2 class="text-center mb-4 text-pink">@ViewData["Title"]</h2>
+    <h2>@ViewData["Title"]</h2>
 
-    <div class="row">
-        <!-- Exportar -->
-        <div class="col-md-6 mb-4">
-            <div class="card border-pink shadow">
-                <div class="card-header bg-pink text-white">
-                    <h5 class="mb-0">Exportar Base de Datos</h5>
-                </div>
-                <div class="card-body">
-                    <form asp-controller="Backup" asp-action="Export" method="post">
-                        <div class="mb-3">
-                            <label class="form-label">Base de Datos:</label>
-                            <select name="database" class="form-select" required>
-                                <option value="">Seleccionar...</option>
-                                @foreach (var db in Model)
-                                {
-                                    <option value="@db">@db</option>
-                                }
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-pink w-100">
-                            <i class="bi bi-download"></i> Generar Backup
-                        </button>
-                    </form>
-                </div>
-            </div>
+    <div class="card mt-3">
+        <div class="card-header bg-info text-white bg-pink">
+            <h4>Gestión de Backups</h4>
         </div>
-
-        <!-- Importar -->
-        <div class="col-md-6 mb-4">
-            <div class="card border-pink shadow">
-                <div class="card-header bg-lightpink text-dark">
-                    <h5 class="mb-0">Importar Backup</h5>
+        <div class="card-body bg-lightpink">
+            <div class="row">
+                <!-- Exportar -->
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            Exportar Base de Datos
+                        </div>
+                        <div class="card-body">
+                            <form asp-controller="Backup" asp-action="Export" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label">Base de Datos:</label>
+                                    <select name="database" class="form-select" required>
+                                        <option value="">Seleccionar...</option>
+                                        @foreach (var db in Model)
+                                        {
+                                            <option value="@db">@db</option>
+                                        }
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">
+                                    <i class="bi bi-download"></i> Generar Backup
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form asp-controller="Backup" asp-action="Import" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label class="form-label">Base de Datos:</label>
-                            <select name="database" class="form-select" required>
-                                <option value="">Seleccionar...</option>
-                                @foreach (var db in Model)
-                                {
-                                    <option value="@db">@db</option>
-                                }
-                            </select>
+
+                <!-- Importar -->
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-warning text-dark bg-pink">
+                            Importar Backup
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Archivo ZIP:</label>
-                            <input type="file" name="file" class="form-control" accept=".zip" required onchange="previewFile(this)" />
-                            <div class="form-text">Solo archivos .zip generados por el sistema</div>
+                        <div class="card-body bg-lightpink">
+                            <form asp-controller="Backup" asp-action="Import" method="post" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label class="form-label">Base de Datos:</label>
+                                    <select name="database" class="form-select" required>
+                                        <option value="">Seleccionar...</option>
+                                        @foreach (var db in Model)
+                                        {
+                                            <option value="@db">@db</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Archivo ZIP:</label>
+                                    <input type="file" name="file" class="form-control" 
+                                           accept=".zip" required 
+                                           onchange="previewFile(this)" />
+                                    <div class="form-text">Solo archivos .zip generados por el sistema</div>
+                                </div>
+                                <button type="submit" class="btn btn-danger w-100">
+                                    <i class="bi bi-upload"></i> Restaurar Backup
+                                </button>
+                            </form>
                         </div>
-                        <button type="submit" class="btn btn-dark w-100">
-                            <i class="bi bi-upload"></i> Restaurar Backup
-                        </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,6 +90,7 @@
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
+                    // Opcional: Previsualización del nombre
                     console.log("Archivo seleccionado:", input.files[0].name);
                 };
                 reader.readAsDataURL(input.files[0]);

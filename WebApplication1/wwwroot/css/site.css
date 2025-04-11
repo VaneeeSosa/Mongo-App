@@ -3,6 +3,7 @@ body {
     background-size: cover;
     /* Opcional: Otras propiedades para ajustar la imagen */
 }
+
 .bg-pink {
     background-color: #e91e63 !important;
 }

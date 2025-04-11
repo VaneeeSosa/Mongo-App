@@ -4,68 +4,69 @@
 }
 
 <div class="container mt-4">
-    <h2 class="mb-4">@ViewData["Title"]</h2>
+    <h2>@ViewData["Title"]</h2>
 
-    <div class="row">
-        <!-- Exportar -->
-        <div class="col-md-6 mb-4">
-            <div class="card border-0 shadow" style="background-color:#fde2e4;">
-                <div class="card-header text-white" style="background-color:#e91e63;">
-                    Exportar Datos
-                </div>
-                <div class="card-body">
+    <!-- Lista de Usuarios -->
+    <div class="card mt-3">
+
+        <div class="card-header bg-warning text-dark bg-pink">
+            <h4>Importar / Exportar Datos</h4>
+        </div>
+        <div class="card-body bg-lightpink">
+            <div class="row">
+                <!-- EXPORTAR DATOS -->
+                <div class="col-md-6">
+                    <h5>Exportar Datos</h5>
                     <form asp-controller="Data" asp-action="ExportData" method="post">
-                        <div class="mb-3">
+                        <div class="form-group">
                             <label>Base de Datos:</label>
-                            <select name="database" class="form-select" required>
+                            <select name="database" class="form-control" required>
                                 <option value="">Seleccione una base de datos</option>
                                 @foreach (var db in Model)
                                 {
+                                    <!-- Usar directamente el string -->
                                     <option value="@db">@db</option>
                                 }
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="form-group">
                             <label>Colección:</label>
                             <input type="text" name="collection" class="form-control" placeholder="Nombre de la colección" required />
                         </div>
-                        <button type="submit" class="btn text-white w-100" style="background-color:#e91e63;">Exportar Datos</button>
+                        <button type="submit" class="btn btn-warning mt-2">Exportar Datos</button>
+                    </form>
+                </div>
+                <!-- IMPORTAR DATOS -->
+                <div class="col-md-6">
+                    <h5>Importar Datos</h5>
+                    <form asp-controller="Data" asp-action="ImportData" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Base de Datos:</label>
+                            <select name="database" class="form-control" required>
+                                <option value="">Seleccione una base de datos</option>
+                                @foreach (var db in Model)
+                                {
+                                    <option value="@db">@db</option> <!-- db es string -->
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Colección:</label>
+                            <input type="text" name="collection" class="form-control" placeholder="Nombre de la colección" required />
+                        </div>
+                        <!-- En el formulario de importación -->
+                        <div class="form-group">
+                            <label>Archivo ZIP (contiene JSON/CSV):</label>
+                            <input type="file" name="file" class="form-control-file" accept=".zip" required />
+                            <small class="form-text text-muted">
+                                Sube un ZIP generado por la exportación (contiene un JSON/CSV interno).
+                            </small>
+                        </div>
+                        <button type="submit" class="btn btn-dark mt-2">Importar Datos</button>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- Importar -->
-        <div class="col-md-6 mb-4">
-            <div class="card border-0 shadow" style="background-color:#fce4ec;">
-                <div class="card-header text-white" style="background-color:#ad1457;">
-                    Importar Datos
-                </div>
-                <div class="card-body">
-                    <form asp-controller="Data" asp-action="ImportData" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label>Base de Datos:</label>
-                            <select name="database" class="form-select" required>
-                                <option value="">Seleccione una base de datos</option>
-                                @foreach (var db in Model)
-                                {
-                                    <option value="@db">@db</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label>Colección:</label>
-                            <input type="text" name="collection" class="form-control" placeholder="Nombre de la colección" required />
-                        </div>
-                        <div class="mb-3">
-                            <label>Archivo ZIP:</label>
-                            <input type="file" name="file" class="form-control" accept=".zip" required />
-                            <small class="text-muted">ZIP generado por exportación</small>
-                        </div>
-                        <button type="submit" class="btn btn-dark w-100">Importar Datos</button>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
