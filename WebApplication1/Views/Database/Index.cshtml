@@ -18,8 +18,14 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         @db
                         <div>
-                            <a href="/Security/Users?database=@db" class="btn btn-sm btn-info">Usuarios</a>
-                            <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+                            <!-- Enlace para ver los usuarios -->
+                            <a asp-controller="Security" asp-action="Users" asp-route-database="@db" class="btn btn-sm btn-info">Usuarios</a>
+
+                            <!-- Formulario para eliminar la base de datos -->
+                            <form asp-controller="Database" asp-action="DeleteDatabase" method="post" class="d-inline">
+                                <input type="hidden" name="databaseName" value="@db" />
+                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                            </form>
                         </div>
                     </li>
                 }
@@ -33,7 +39,7 @@
             <h4>Nueva Base de Datos</h4>
         </div>
         <div class="card-body bg-lightpink">
-            <form asp-action="CreateDatabase">
+            <form asp-action="CreateDatabase" method="post">
                 <div class="input-group">
                     <input type="text" class="form-control" name="databaseName" placeholder="Nombre de la base de datos" required>
                     <button type="submit" class="btn btn-success">Crear</button>
@@ -42,23 +48,19 @@
         </div>
     </div>
 
-
-
+    <!-- Backups y Colecciones -->
     <div class="card mt-4">
         <div class="card-header bg-warning text-dark bg-pink">
             <h4>Backups y Colecciones</h4>
         </div>
         <div class="card-body bg-lightpink">
             <div class="row">
-                <!-- EXPORTAR DATOS -->
                 <div class="col-md-6">
                     <h5>Importar e Exportar</h5>
-
                     <a asp-controller="Data" asp-action="ExportacionImportacion" class="btn btn-warning mt-2">Colecciones</a>
                     <a asp-controller="Backup" asp-action="Backups" class="btn btn-warning mt-2">Backups</a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
