@@ -25,6 +25,8 @@ builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
 
 // 4. Registro de servicios
 builder.Services.AddScoped<MongoDBService>();
+builder.Services.AddScoped<SecurityService>();
+
 builder.Services.AddLogging(logging =>
 {
     logging.AddConsole();
