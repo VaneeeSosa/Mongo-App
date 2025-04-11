@@ -33,10 +33,9 @@
                             <td>
                                 <form method="post" asp-action="DeleteUser">
                                     <input type="hidden" name="database" value="@ViewContext.HttpContext.Request.Query["database"]" />
-                                    <input type="hidden" name="username" value="@user["user"].ToString()" />
+                                    <input type="hidden" name="username" value="@user["user"]" />
                                     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                 </form>
-
                             </td>
                         </tr>
                     }

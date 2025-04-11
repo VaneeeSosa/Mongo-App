@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\views\\security\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\security\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\services\\securityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:services\\securityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\controllers\\securitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:controllers\\securitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\controllers\\databasecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:controllers\\databasecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\controllers\\datacontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:controllers\\datacontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\controllers\\databasecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:controllers\\databasecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\controllers\\backupcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,14 +47,6 @@
       "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\views\\security\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\security\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|c:\\users\\vsanc\\documents\\github\\mongo-app\\webapplication1\\views\\database\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2F32BD65-A608-4BFF-B65A-F058C70B1EDE}|WebApplication1.csproj|solutionrelative:views\\database\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -58,11 +62,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "SecurityService.cs",
+              "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Services\\SecurityService.cs",
+              "RelativeDocumentMoniker": "Services\\SecurityService.cs",
+              "ToolTip": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Services\\SecurityService.cs",
+              "RelativeToolTip": "Services\\SecurityService.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAAwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T03:34:31.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -75,20 +92,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "SecurityController.cs",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Controllers\\SecurityController.cs",
               "RelativeDocumentMoniker": "Controllers\\SecurityController.cs",
               "ToolTip": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Controllers\\SecurityController.cs",
               "RelativeToolTip": "Controllers\\SecurityController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAADwvx0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-11T02:35:59.992Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
@@ -101,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "DataControllers.cs",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Controllers\\DataControllers.cs",
               "RelativeDocumentMoniker": "Controllers\\DataControllers.cs",
@@ -114,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -122,23 +139,25 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-11T02:34:47.713Z"
+              "WhenOpened": "2025-04-11T02:34:47.713Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
               "ToolTip": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\wwwroot\\css\\site.css",
               "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-04-11T02:33:59.507Z"
+              "WhenOpened": "2025-04-11T02:33:59.507Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "BackupControllers.cs",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Controllers\\BackupControllers.cs",
               "RelativeDocumentMoniker": "Controllers\\BackupControllers.cs",
@@ -151,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DatabaseControllers.cs",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Controllers\\DatabaseControllers.cs",
               "RelativeDocumentMoniker": "Controllers\\DatabaseControllers.cs",
@@ -164,19 +183,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "Users.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Views\\Security\\Users.cshtml",
               "RelativeDocumentMoniker": "Views\\Security\\Users.cshtml",
               "ToolTip": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Views\\Security\\Users.cshtml",
               "RelativeToolTip": "Views\\Security\\Users.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-11T02:30:11.151Z"
+              "WhenOpened": "2025-04-11T02:30:11.151Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Views\\Database\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Database\\Index.cshtml",
@@ -184,11 +204,12 @@
               "RelativeToolTip": "Views\\Database\\Index.cshtml",
               "ViewState": "AgIAAB4AAAAAAAAAAADwvz8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-11T02:30:06.775Z"
+              "WhenOpened": "2025-04-11T02:30:06.775Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "ExportacionImportacion.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Views\\Data\\ExportacionImportacion.cshtml",
               "RelativeDocumentMoniker": "Views\\Data\\ExportacionImportacion.cshtml",
@@ -196,11 +217,12 @@
               "RelativeToolTip": "Views\\Data\\ExportacionImportacion.cshtml",
               "ViewState": "AgIAACYAAAAAAAAAAADwv0cAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-11T02:30:03.351Z"
+              "WhenOpened": "2025-04-11T02:30:03.351Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Backups.cshtml",
               "DocumentMoniker": "C:\\Users\\vsanc\\Documents\\GitHub\\Mongo-App\\WebApplication1\\Views\\Backup\\Backups.cshtml",
               "RelativeDocumentMoniker": "Views\\Backup\\Backups.cshtml",
@@ -208,7 +230,8 @@
               "RelativeToolTip": "Views\\Backup\\Backups.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-11T02:30:00.032Z"
+              "WhenOpened": "2025-04-11T02:30:00.032Z",
+              "EditorCaption": ""
             }
           ]
         }
