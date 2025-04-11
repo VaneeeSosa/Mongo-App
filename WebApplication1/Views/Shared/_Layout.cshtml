@@ -8,36 +8,13 @@
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <!-- Tu CSS adicional (si lo hay) -->
     <link rel="stylesheet" href="~/css/site.css" />
-    <style>
-        .bg-pink-1 {
-            background-color: #f8bbd0 !important;
-        }
-        /* Rosa claro */
-        .bg-pink-2 {
-            background-color: #f48fb1 !important;
-        }
-        /* Rosa medio */
-        .bg-pink-3 {
-            background-color: #ec407a !important;
-        }
-        /* Rosa intenso */
-        .btn-pink {
-            background-color: #e91e63;
-            color: white;
-        }
-
-            .btn-pink:hover {
-                background-color: #c2185b;
-                color: white;
-            }
-    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-pink-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <!-- Redirige al método Index del controlador Home -->
-                <a class="navbar-brand text-light" asp-controller="Database" asp-action="Index">Admin MongoDB</a>
+                <a class="navbar-brand" asp-controller="Database" asp-action="Index">Admin MongoDB</a>
                 <!-- Aquí podrías agregar más elementos de la navbar -->
             </div>
         </nav>
