@@ -1,3 +1,8 @@
+body {
+    background: url('/images/fondoM.png') no-repeat center center fixed;
+    background-size: cover;
+    /* Opcional: Otras propiedades para ajustar la imagen */
+}
 .bg-pink {
     background-color: #e91e63 !important;
 }

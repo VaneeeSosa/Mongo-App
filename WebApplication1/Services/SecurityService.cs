@@ -41,14 +41,24 @@ namespace WebApplication1.Services
         }
 
         // Eliminar usuario
-        public async Task DeleteUserAsync(string database, string user)
+        public async Task DeleteUserAsync(string database, string username)
         {
             var db = _client.GetDatabase(database);
             var command = new BsonDocument
+    {
+        { "dropUser", username }
+    };
+
+            try
             {
-                ["dropUser"] = user
-            };
-            await db.RunCommandAsync<BsonDocument>(command);
+                await db.RunCommandAsync<BsonDocument>(command);
+            }
+            catch (Exception ex)
+            {
+                // Manejo general para cualquier tipo de error
+                throw new Exception($"Error al eliminar el usuario {username}: {ex.Message}", ex);
+            }
         }
+
     }
 }

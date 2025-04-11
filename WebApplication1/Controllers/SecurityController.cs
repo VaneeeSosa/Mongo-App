@@ -29,8 +29,18 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string database, string username)
         {
-            await _securityService.DeleteUserAsync(database, username);
+            try
+            {
+                await _securityService.DeleteUserAsync(database, username);
+                TempData["SuccessMessage"] = $"El usuario {username} se eliminó exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                // Puedes registrar el error con un logging framework o similar
+                TempData["ErrorMessage"] = $"Error al eliminar el usuario {username}: {ex.Message}";
+            }
             return RedirectToAction("Users", new { database });
         }
+
     }
 }
