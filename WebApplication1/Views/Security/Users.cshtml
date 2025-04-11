@@ -4,11 +4,12 @@
 }
 
 <div class="container mt-4">
-    <h2 class="text-center text-pink fw-bold">@ViewData["Title"]</h2>
+    <h2>@ViewData["Title"]</h2>
 
-    <div class="card mt-3 shadow border-0">
-        <div class="card-header bg-pink text-white fw-bold">
-            Usuarios Registrados
+    <!-- Lista de Usuarios -->
+    <div class="card mt-3">
+        <div class="card-header bg-info text-white bg-pink">
+            <h4>Usuarios Registrados</h4>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -27,7 +28,7 @@
                             <td>
                                 @foreach (var role in user["roles"].AsBsonArray)
                                 {
-                                    <span class="badge bg-lightpink text-dark">@role["role"]</span>
+                                    <span class="badge bg-primary">@role["role"]</span>
                                 }
                             </td>
                             <td>
@@ -44,9 +45,10 @@
         </div>
     </div>
 
-    <div class="card mt-4 shadow border-0">
-        <div class="card-header bg-lightpink text-dark fw-bold">
-            Nuevo Usuario
+    <!-- Crear Nuevo Usuario -->
+    <div class="card mt-4">
+        <div class="card-header bg-success text-white">
+            <h4>Nuevo Usuario</h4>
         </div>
         <div class="card-body">
             <form asp-action="CreateUser">
@@ -66,7 +68,7 @@
                         </select>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-pink">Crear</button>
+                        <button type="submit" class="btn btn-primary">Crear</button>
                     </div>
                 </div>
             </form>

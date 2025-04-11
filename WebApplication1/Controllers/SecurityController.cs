@@ -32,6 +32,5 @@ namespace WebApplication1.Controllers
             await _securityService.DeleteUserAsync(database, username);
             return RedirectToAction("Users", new { database });
         }
-
     }
 }
